@@ -1,6 +1,10 @@
-import { CREATE_GAME } from '../actions/games/create'
 import { FETCHED_GAMES } from '../actions/games/fetch'
-
+import {
+  CREATE_GAME,
+  UPDATE_GAME,
+  REMOVE_GAME
+} from '../actions/games/subscribe'
+// import { CREATE_GAME } from '../actions/games/create'
 
 const games =[
   {
@@ -20,7 +24,18 @@ export default function(state = games, { type, payload } = {}) {
       case CREATE_GAME :
         return [Object.assign({}, payload)].concat(state)
 
-      case FETCHED_GAMES :
+      case UPDATE_GAME :
+        return state.map((game) => {
+          if (game._id === payload._id) {
+            return {...payload }
+          }
+          return game
+        })
+
+      case REMOVE_GAME :
+        return state.filter((game) => (game._id !== payload._id))
+
+    case FETCHED_GAMES :
         return state.concat(payload)
 
       default :

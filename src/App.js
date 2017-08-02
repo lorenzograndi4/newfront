@@ -27,7 +27,10 @@ class App extends PureComponent {
           <Navigation />
           <Title content="Lobby" />
         </div>
-        { this.props.children }
+        <p className="App-intro">
+    
+        </p>
+        {this.props.children}
       </div>
       </MuiThemeProvider>
     );
