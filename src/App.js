@@ -31,7 +31,7 @@ class App extends PureComponent {
           <Title content="Lobby" />
         </div>
         <p className="App-intro">
-          <Lobby updateGame={ this.updateGame.bind(this) } />
+    
         </p>
         {this.props.children}
       </div>
