@@ -24,12 +24,13 @@ export default (user) => {
 
         api.app.set('user', user)
 
-        history.replace('/')
+        // history.replace('/')
 
         dispatch({
           type: USER_SIGNED_IN,
           payload: user
         })
+        history.push('/')
       })
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })

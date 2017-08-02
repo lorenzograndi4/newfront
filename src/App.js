@@ -17,22 +17,15 @@ class App extends PureComponent {
     // return  { muiTheme }
   }
 
-  updateGame(id, update) {
-    // We will clean this up later
-  }
-
   render() {
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
         <div className="App-header">
-            <Navigation />
-
+          <Navigation />
           <Title content="Lobby" />
         </div>
-        <p className="App-intro">
-          <Lobby updateGame={ this.updateGame.bind(this) } />
-        </p>
         {this.props.children}
       </div>
       </MuiThemeProvider>
