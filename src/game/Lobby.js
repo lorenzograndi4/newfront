@@ -5,9 +5,15 @@ import { push } from 'react-router-redux'
 import fetchGames from '../actions/games/fetch'
 import GameItem from './GameItem'
 import Title from '../component/Title'
+import CreateGameButton from './CreateGameButton'
+import PropTypes from 'prop-types'
 import subscribeToGames from '../actions/games/subscribe'
 
 class Lobby extends PureComponent {
+  static propTypes = {
+    games: PropTypes.array.isRequired,
+    fetchGames: PropTypes.func.isRequired,
+    
   componentWillMount() {
     const { subscribed, fetchGames, subscribeToGames } = this.props
      fetchGames()
@@ -37,16 +43,21 @@ class Lobby extends PureComponent {
     return <GameItem key={index} { ...game } />
   }
 
+  componentWillMount() {
+    this.props.fetchGames()
+  }
+
   render() {
     return(
       <div className="games wrapper">
         <header>
+
           <Title content="Games" />
         </header>
 
         <main>
           { this.props.games.map(this.renderGame) }
-          <p>Create new game</p>
+          <CreateGameButton />
         </main>
       </div>
     )

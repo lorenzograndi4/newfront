@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
 import { Router, Route, IndexRoute } from 'react-router'
 import store, { history } from './store'
-import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
 import App from './App';
 import Lobby from './game/Lobby'
+import GamePage from './component/GamePage'
+import registerServiceWorker from './registerServiceWorker';
 import SignUp from './users/SignUp'
 import SignIn from './users/SignIn'
 
@@ -22,10 +23,9 @@ ReactDOM.render(
         <IndexRoute component={Lobby} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
+        <Route path='/games/:gameId' component={GamePage} />
       </Route>
     </Router>
   </Provider>,
-  document.getElementById('root')
-);
-
-registerServiceWorker();
+  document.getElementById('root'));
+  registerServiceWorker();

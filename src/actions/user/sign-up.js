@@ -1,5 +1,5 @@
-
 import API from '../../api'
+import { history } from '../../store'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
@@ -16,20 +16,19 @@ export default (user) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
-    const backend = api.service('users')
-
-    backend.create(user)
-      .then((result) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({ type: LOAD_SUCCESS })
-        dispatch(signIn(user))
-      })
-      .catch((error) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({
-          type: LOAD_ERROR,
-          payload: error.message
+    api.service('users')
+      .create(user)
+        .then((result) => {
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({ type: LOAD_SUCCESS })
+          dispatch(signIn(user))
         })
+        .catch((error) => {
+          dispatch({ type: APP_DONE_LOADING })
+          dispatch({
+            type: LOAD_ERROR,
+            payload: error.message
+          })
       })
   }
 }

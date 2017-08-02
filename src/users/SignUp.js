@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+// import { push } from 'react-router-redux'
 import Paper from 'material-ui/Paper'
+import { history } from '../store'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -22,11 +23,11 @@ const buttonStyle = {
 
 export class SignUp extends PureComponent {
   static propTypes = {
-    push: PropTypes.func.isRequired,
+    // push: PropTypes.func.isRequired,
     signUp: PropTypes.func.isRequired,
   }
 
-  state = {}
+  state = { errors: {} }
 
   submitForm(event) {
     event.preventDefault()
@@ -42,7 +43,7 @@ export class SignUp extends PureComponent {
   }
 
   signIn() {
-    this.props.push('/sign-in')
+    history.push('/sign-in')
   }
 
   validateAll() {
@@ -131,6 +132,7 @@ export class SignUp extends PureComponent {
   }
 
   render() {
+    const { errors } = this.state
     return (
       <Paper style={ dialogStyle }>
         <Title content="Sign Up" level={2} />
@@ -171,4 +173,4 @@ export class SignUp extends PureComponent {
   }
 }
 
-export default connect(null, { signUp, push })(SignUp)
+export default connect(null, { signUp })(SignUp)

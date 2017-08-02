@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react';
 // import logo from './logo.svg';
 import PropTypes from 'prop-types'
 import Lobby from './game/Lobby'
-import Title from './component/Title.js'
+import Title from './component/Title'
 import Navigation from './component/Navigation'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/themes'
@@ -13,21 +13,18 @@ class App extends PureComponent {
     muiTheme: PropTypes.object.isRequired,
   }
 
+
   getChildContext(){
     // return  { muiTheme }
   }
 
-  updateGame(id, update) {
-    // We will clean this up later
-  }
-
   render() {
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
         <div className="App-header">
-            <Navigation />
-
+          <Navigation />
           <Title content="Lobby" />
         </div>
         <p className="App-intro">
