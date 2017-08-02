@@ -18,6 +18,7 @@ class App extends PureComponent {
   }
 
   render() {
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
