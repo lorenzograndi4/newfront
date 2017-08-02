@@ -13,7 +13,7 @@ class GameItem extends PureComponent {
   }
 
   render() {
-    const { _id, title, players, } = this.props
+    const { _id, title } = this.props
     console.log(this.props)
 
     return(

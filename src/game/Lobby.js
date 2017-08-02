@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import GameItem from './GameItem'
 import Title from '../component/Title'
 import PropTypes from 'prop-types'
+import CreateGameButton from './CreateGameButton'
 import fetchGames from '../actions/games/fetch'
 
 class Lobby extends PureComponent {
@@ -24,12 +25,13 @@ class Lobby extends PureComponent {
     return(
       <div className="games wrapper">
         <header>
+
           <Title content="Games" />
         </header>
 
         <main>
           { this.props.games.map(this.renderGame) }
-          <p>Create new game</p>
+          <CreateGameButton />
         </main>
       </div>
     )
