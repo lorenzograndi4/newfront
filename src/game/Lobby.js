@@ -3,10 +3,21 @@ import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import GameItem from './GameItem'
 import Title from '../component/Title'
+import PropTypes from 'prop-types'
+import fetchGames from '../actions/games/fetch'
 
 class Lobby extends PureComponent {
+  static propTypes = {
+    games: PropTypes.array.isRequired,
+    fetchGames: PropTypes.func.isRequired,
+  }
+
   renderGame(game, index) {
     return <GameItem key={index} { ...game } />
+  }
+
+  componentWillMount() {
+    this.props.fetchGames()
   }
 
   render() {
@@ -29,4 +40,4 @@ const mapStateToProps = ({ games }) => {
   return { games }
 }
 
-export default connect(mapStateToProps)(Lobby)
+export default connect(mapStateToProps, { fetchGames })(Lobby)
