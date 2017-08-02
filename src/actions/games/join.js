@@ -1,31 +1,36 @@
-import API from '../../api'
-import LOAD_ERROR from '../loading'
 
-// export const CREATE_GAME = 'CREATE_GAME'
-export const GAME_CREATED = 'GAME_CREATED'
-// export default (newGame) => {
-//   return {
-//     type: CREATE_GAME,
-//     payload: newGame
-//   }
-// }
+import API from '../../api'
+import {
+  APP_LOADING,
+  APP_DONE_LOADING,
+  LOAD_ERROR,
+  LOAD_SUCCESS
+} from '../loading'
+
+export const JOINED_GAME = 'JOINED_GAME'
+
 const api = new API()
 
-export default () => {
+export default (gameId) => {
   return (dispatch) => {
+    dispatch({ type: APP_LOADING })
 
     const backend = api.service('games')
 
     api.app.authenticate()
       .then(() => {
-        backend.create({})
+        backend.patch(gameId, { join: true })
           .then((result) => {
+            dispatch({ type: APP_DONE_LOADING })
+            dispatch({ type: LOAD_SUCCESS })
+
             dispatch({
-              // type: GAME_CREATED,
-              // payload: result
+              type: JOINED_GAME,
+              payload: result
             })
           })
           .catch((error) => {
+            dispatch({ type: APP_DONE_LOADING })
             dispatch({
               type: LOAD_ERROR,
               payload: error.message
@@ -33,6 +38,7 @@ export default () => {
           })
       })
       .catch((error) => {
+        dispatch({ type: APP_DONE_LOADING })
         dispatch({
           type: LOAD_ERROR,
           payload: error.message

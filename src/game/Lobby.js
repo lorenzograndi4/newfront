@@ -13,11 +13,14 @@ class Lobby extends PureComponent {
   static propTypes = {
     games: PropTypes.array.isRequired,
     fetchGames: PropTypes.func.isRequired,
-    
-  componentWillMount() {
+  }
+
+  componentWillMount() { // double check this
     const { subscribed, fetchGames, subscribeToGames } = this.props
      fetchGames()
     if (!subscribed) subscribeToGames()
+    // this.props.fetchGames()
+    // this.props.subscribeToGames()
   }
 
   goToGame(gameId) {
@@ -43,10 +46,6 @@ class Lobby extends PureComponent {
     return <GameItem key={index} { ...game } />
   }
 
-  componentWillMount() {
-    this.props.fetchGames()
-  }
-
   render() {
     return(
       <div className="games wrapper">
@@ -56,16 +55,20 @@ class Lobby extends PureComponent {
         </header>
 
         <main>
-          { this.props.games.map(this.renderGame) }
           <CreateGameButton />
+          { this.props.games.map(this.renderGame.bind(this)) }
         </main>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ games }) => {
-  return { games }
-}
+const mapStateToProps = ({ games, currentUser, subscriptions }) => (
+   {
+    games,
+    currentUser,
+    subscribed: subscriptions.includes('games')
+   }
+)
 
 export default connect(mapStateToProps, { fetchGames, subscribeToGames, push })(Lobby)
