@@ -4,10 +4,12 @@ import { FETCHED_GAMES } from '../actions/games/fetch'
 
 const games =[
   {
+    _id: 1,
     title: 'Game1',
     players: []
   },
   {
+    _id: 2,
     title: 'Game2',
     players: []
   }

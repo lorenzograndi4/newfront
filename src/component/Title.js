@@ -2,16 +2,17 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 
-class Title extends PureComponent {
+export default class Title extends PureComponent {
   static propTypes = {
-    content: PropTypes.string.isRequired,
+    content: PropTypes.stringisRequired,
+     title: PropTypes.stringisRequired,
   }
 
   render() {
     return(
-      <h1>{ this.props.content }</h1>
+      <div>
+        <h1>{ this.props.content }</h1>
+      </div>
     )
   }
 }
-
-export default Title
