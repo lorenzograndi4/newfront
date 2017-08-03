@@ -6,7 +6,7 @@ import io from 'socket.io-client/dist/socket.io'
 
 const FEATHERS_TOKEN_KEY = 'games-api'
 
-const host = 'ws://localhost:3000'
+const host = 'http://localhost:3030'
 
 
 

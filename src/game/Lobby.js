@@ -13,7 +13,8 @@ class Lobby extends PureComponent {
   static propTypes = {
     games: PropTypes.array.isRequired,
     fetchGames: PropTypes.func.isRequired,
-    
+  }
+
   componentWillMount() {
     const { subscribed, fetchGames, subscribeToGames } = this.props
      fetchGames()
@@ -41,10 +42,6 @@ class Lobby extends PureComponent {
 
   renderGame(game, index) {
     return <GameItem key={index} { ...game } />
-  }
-
-  componentWillMount() {
-    this.props.fetchGames()
   }
 
   render() {
