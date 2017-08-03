@@ -5,6 +5,8 @@ import { connect } from 'react-redux'
 import { history } from '../store'
 import JoinGameButton from './JoinGameButton'
 import joinGame from  '../actions/games/join'
+import DeleteGameButton from './DeleteGameButton'
+import deleteGame from  '../actions/games/delete'
 // import games from '../reducers/games'
 
 class GameItem extends PureComponent {
@@ -14,8 +16,12 @@ class GameItem extends PureComponent {
 
   joinThisGame() {
     const { _id, joinGame } = this.props
-    console.log(_id)
     joinGame(_id)
+  }
+
+  deleteThisGame() {
+    const { _id, deleteGame } = this.props
+    deleteGame(_id)
   }
 
   render() {
@@ -26,9 +32,10 @@ class GameItem extends PureComponent {
       <article className="game">
         <Link to={`/games/${_id}`}>{ title } with id: { _id }</Link>
         <JoinGameButton onChange={this.joinThisGame.bind(this)} />
+        <DeleteGameButton onChange={this.deleteThisGame.bind(this)} />
       </article>
     )
   }
 }
 
-export default connect(null, { joinGame })(GameItem)
+export default connect(null, { joinGame, deleteGame })(GameItem)
