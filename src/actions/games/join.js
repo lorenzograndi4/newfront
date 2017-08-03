@@ -1,4 +1,4 @@
-
+import { history } from '../../store'
 import API from '../../api'
 import {
   APP_LOADING,
@@ -28,9 +28,7 @@ export default (gameId) => {
               type: JOINED_GAME,
               payload: result
             })
-              // .then(() => {
-              //   history.push(`/games/${gameId}`)
-              // })
+            history.push(`/games/${gameId}`)
           })
           .catch((error) => {
             dispatch({ type: APP_DONE_LOADING })
