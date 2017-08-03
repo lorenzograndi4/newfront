@@ -1,5 +1,5 @@
 import API from '../../api'
-import { history } from '../../store'
+// import { history } from '../../store'
 import {
   APP_LOADING,
   APP_DONE_LOADING,

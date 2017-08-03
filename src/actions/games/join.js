@@ -28,6 +28,9 @@ export default (gameId) => {
               type: JOINED_GAME,
               payload: result
             })
+              // .then(() => {
+              //   history.push(`/games/${gameId}`)
+              // })
           })
           .catch((error) => {
             dispatch({ type: APP_DONE_LOADING })

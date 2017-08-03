@@ -35,7 +35,7 @@ class Navigation extends PureComponent {
 
 const mapStateToProps = ({ currentUser }) => ({
   signedIn: !!currentUser && !!currentUser._id,
-  if (signedIn) { name: currentUser.name } // how to solve this?
+  name:  !!currentUser && !!currentUser.name // how to solve this?
 })
 
 export default connect(mapStateToProps, { push, signOut })(Navigation)

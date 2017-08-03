@@ -37,7 +37,7 @@ export default function(state = [], { type, payload } = {}) {
       case REMOVE_GAME :
         return state.filter((game) => (game._id !== payload._id))
 
-    case FETCHED_GAMES :
+      case FETCHED_GAMES :
         return [ ...payload ]
 
       default :

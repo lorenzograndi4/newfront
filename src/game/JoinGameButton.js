@@ -6,18 +6,18 @@ import joinGame from '../actions/games/join'
 
 class JoinGameButton extends PureComponent {
   static propTypes = {
-    signedIn: PropTypes.bool,
+    signedIn: PropTypes.bool.isRequired,
   }
 
   render() {
     if (!this.props.signedIn) return null
 
     return (
-      <div className="CreateGameButton">
+      <div className="JoinGameButton">
         <RaisedButton
           label="Join this Game"
           primary={true}
-          onClick={this.props.joinGame}
+          onClick={this.props.onChange}
         />
       </div>
     )

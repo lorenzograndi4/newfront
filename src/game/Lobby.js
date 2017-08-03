@@ -50,10 +50,8 @@ class Lobby extends PureComponent {
     return(
       <div className="games wrapper">
         <header>
-
           <Title content="Games" />
         </header>
-
         <main>
           <CreateGameButton />
           { this.props.games.map(this.renderGame.bind(this)) }
