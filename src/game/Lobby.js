@@ -5,6 +5,7 @@ import { push } from 'react-router-redux'
 import fetchGames from '../actions/games/fetch'
 import GameItem from './GameItem'
 import Title from '../component/Title'
+import { List } from 'material-ui/List';
 import CreateGameButton from './CreateGameButton'
 import PropTypes from 'prop-types'
 import subscribeToGames from '../actions/games/subscribe'
@@ -54,7 +55,9 @@ class Lobby extends PureComponent {
         </header>
         <main>
           <CreateGameButton />
-          { this.props.games.map(this.renderGame.bind(this)) }
+            <List>
+              { this.props.games.map(this.renderGame.bind(this)) }
+            </List>
         </main>
       </div>
     )

@@ -14,10 +14,10 @@ export default (gameId) => {
       .then(() => {
         backend.remove(gameId)
           .then((result) => {
-            dispatch({
-              type: DELETED_GAME,
-              payload: result
-            })
+            // dispatch({
+            //   type: DELETED_GAME, // Don't need this either
+            //   payload: result
+            // })
           })
           .catch((error) => {
             dispatch({

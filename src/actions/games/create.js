@@ -20,10 +20,10 @@ export default () => {
       .then(() => {
         backend.create({})
           .then((result) => {
-            dispatch({
-              // type: GAME_CREATED,
-              // payload: result
-            })
+            // dispatch({
+            //   type: 'DO_WE_NEED_THIS', // answer: no
+            //   payload: result
+            // })
           })
           .catch((error) => {
             dispatch({

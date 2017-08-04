@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router'
 import { connect } from 'react-redux'
-import { history } from '../store'
+import { ListItem } from 'material-ui/List';
 import JoinGameButton from './JoinGameButton'
 import joinGame from  '../actions/games/join'
 import DeleteGameButton from './DeleteGameButton'
@@ -12,6 +12,7 @@ import deleteGame from  '../actions/games/delete'
 class GameItem extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
+    usePlural: PropTypes.bool.isRequired
   }
 
   joinThisGame() {
@@ -26,14 +27,18 @@ class GameItem extends PureComponent {
 
   render() {
     const { _id, title, players } = this.props
+    const usePlural = (players.length >= 2)
     console.log(this.props)
 
     return(
-      <article className="game">
-        <Link to={`/games/${_id}`}>{ title } with id: { _id }</Link>
-        <JoinGameButton onChange={this.joinThisGame.bind(this)} />
-        <DeleteGameButton onChange={this.deleteThisGame.bind(this)} />
-      </article>
+        <ListItem primarytext={title}>
+          <Link to={`/games/${_id}`}>
+            { title } has { players.length } player
+            { usePlural ? 's' : ''}
+          </Link>
+          <JoinGameButton onChange={this.joinThisGame.bind(this)} />
+          <DeleteGameButton onChange={this.deleteThisGame.bind(this)} />
+        </ListItem>
     )
   }
 }
