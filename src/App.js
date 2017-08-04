@@ -26,17 +26,8 @@ class App extends PureComponent {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
       <div className="App">
-        <div className="App-header">
-          <Navigation />
-          <Title content="Lobby" />
-        </div>
-        <p className="App-intro">
-
-        </p>
+        <Navigation />
         {this.props.children}
-
-    
-
       </div>
       </MuiThemeProvider>
     );

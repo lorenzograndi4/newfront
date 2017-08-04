@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 
 export default class Title extends PureComponent {
   static propTypes = {
-    content: PropTypes.stringisRequired,
-     title: PropTypes.stringisRequired,
+    content: PropTypes.string.isRequired,
   }
 
   render() {

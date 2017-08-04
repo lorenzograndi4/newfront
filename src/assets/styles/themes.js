@@ -22,8 +22,8 @@ export const grey700       = '#616161';
 
 // Palette
 export const palette = {
-  primary1Color: grey600,
-  primary2Color: green,
+  primary1Color: green,
+  primary2Color: grey600,
   primary3Color: green,
   accent1Color: green,
   textColor: grey700,
