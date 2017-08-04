@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import signOut from '../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
+import ActionHome from 'material-ui/svg-icons/action/home';
 import currentUser from '../reducers/currentUser'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -17,13 +18,13 @@ class Navigation extends PureComponent {
   }
 
   render() {
-    const { signedIn, name } = this.props
+    const { signedIn, currentUserName } = this.props
     return (
       <AppBar
         title={signedIn
-          ? "Welcome, " + name
+          ? "Welcome, " + currentUserName
           : "Nanogram"}
-        iconElementLeft={<IconButton onClick={this.goHome.bind(this)}></IconButton>}
+        iconElementLeft={<IconButton onClick={this.goHome.bind(this)}><ActionHome /></IconButton>}
         iconElementRight={signedIn ?
           <FlatButton label="Sign out" onClick={this.props.signOut} /> :
           <FlatButton label="Sign up" onClick={this.signUp.bind(this)} />
@@ -33,9 +34,9 @@ class Navigation extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
+const mapStateToProps = ({ ...currentUser }) => ({
   signedIn: !!currentUser && !!currentUser._id,
-  if (signedIn) { name: currentUser.name } // how to solve this?
+  currentUserName: currentUser || 'friend' // how to solve this?
 })
 
 export default connect(mapStateToProps, { push, signOut })(Navigation)

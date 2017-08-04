@@ -6,23 +6,25 @@ import {
 } from '../actions/games/subscribe'
 // import { CREATE_GAME } from '../actions/games/create'
 
-const games =[
-  {
-    _id: 1,
-    title: 'Game1',
-    players: []
-  },
-  {
-    _id: 2,
-    title: 'Game2',
-    players: []
-  }
-]
+// const games =[
+//   {
+//     _id: 1,
+//     title: 'Game1',
+//     players: []
+//   },
+//   {
+//     _id: 2,
+//     title: 'Game2',
+//     players: []
+//   }
+// ]
 
-export default function(state = games, { type, payload } = {}) {
+export default function(state = [], { type, payload } = {}) {
   switch(type) {
       case CREATE_GAME :
-        return [Object.assign({}, payload)].concat(state)
+        // return [Object.assign({}, payload)].concat(state)
+        const newGame = { ...payload }
+        return [newGame].concat(state)
 
       case UPDATE_GAME :
         return state.map((game) => {
@@ -35,8 +37,8 @@ export default function(state = games, { type, payload } = {}) {
       case REMOVE_GAME :
         return state.filter((game) => (game._id !== payload._id))
 
-    case FETCHED_GAMES :
-        return state.concat(payload)
+      case FETCHED_GAMES :
+        return [ ...payload ]
 
       default :
         return state

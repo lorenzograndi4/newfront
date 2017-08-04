@@ -5,6 +5,7 @@ import { push } from 'react-router-redux'
 import fetchGames from '../actions/games/fetch'
 import GameItem from './GameItem'
 import Title from '../component/Title'
+import { List } from 'material-ui/List';
 import CreateGameButton from './CreateGameButton'
 import PropTypes from 'prop-types'
 import subscribeToGames from '../actions/games/subscribe'
@@ -13,11 +14,14 @@ class Lobby extends PureComponent {
   static propTypes = {
     games: PropTypes.array.isRequired,
     fetchGames: PropTypes.func.isRequired,
-    
-  componentWillMount() {
+  }
+
+  componentWillMount() { // double check this
     const { subscribed, fetchGames, subscribeToGames } = this.props
      fetchGames()
     if (!subscribed) subscribeToGames()
+    // this.props.fetchGames()
+    // this.props.subscribeToGames()
   }
 
   goToGame(gameId) {
@@ -43,29 +47,29 @@ class Lobby extends PureComponent {
     return <GameItem key={index} { ...game } />
   }
 
-  componentWillMount() {
-    this.props.fetchGames()
-  }
-
   render() {
     return(
       <div className="games wrapper">
         <header>
-
           <Title content="Games" />
         </header>
-
         <main>
-          { this.props.games.map(this.renderGame) }
           <CreateGameButton />
+            <List>
+              { this.props.games.map(this.renderGame.bind(this)) }
+            </List>
         </main>
       </div>
     )
   }
 }
 
-const mapStateToProps = ({ games }) => {
-  return { games }
-}
+const mapStateToProps = ({ games, currentUser, subscriptions }) => (
+   {
+    games,
+    currentUser,
+    subscribed: subscriptions.includes('games')
+   }
+)
 
 export default connect(mapStateToProps, { fetchGames, subscribeToGames, push })(Lobby)

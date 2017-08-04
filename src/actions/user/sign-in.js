@@ -24,8 +24,6 @@ export default (user) => {
 
         api.app.set('user', user)
 
-        // history.replace('/')
-
         dispatch({
           type: USER_SIGNED_IN,
           payload: user

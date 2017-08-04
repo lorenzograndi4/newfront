@@ -1,27 +1,21 @@
 import API from '../../api'
-import LOAD_ERROR from '../loading'
+import { LOAD_ERROR } from '../loading'
 
-// export const CREATE_GAME = 'CREATE_GAME'
-export const GAME_CREATED = 'GAME_CREATED'
-// export default (newGame) => {
-//   return {
-//     type: CREATE_GAME,
-//     payload: newGame
-//   }
-// }
+export const DELETED_GAME = 'DELETED_GAME'
+
 const api = new API()
 
-export default () => {
+export default (gameId) => {
   return (dispatch) => {
 
     const backend = api.service('games')
 
     api.app.authenticate()
       .then(() => {
-        backend.create({})
+        backend.remove(gameId)
           .then((result) => {
             // dispatch({
-            //   type: 'DO_WE_NEED_THIS', // answer: no
+            //   type: DELETED_GAME, // Don't need this either
             //   payload: result
             // })
           })
