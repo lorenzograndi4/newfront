@@ -3,6 +3,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import fetchGames from '../actions/games/fetch'
 import Title from '../component/Title'
+import Board from '../component/Board'
+import Board2 from '../component/Board2'
+import "../index.css"
 
 
 
@@ -23,14 +26,26 @@ export class GamePage extends PureComponent {
 
     return(
 
-      <h1 className="game">
-        <Title content={ title } />
-      </h1>
+      <div className="game">
+        <h1>
+          <Title content={ title } />
+        </h1>
+
+        <table className="nano">
+          <Board />
+        </table>
+        <table className="nano">
+          <Board2 />
+        </table>
+      </div>
+
 
 
     )
   }
 }
+
+
 
 const mapStateToProps = ({ games }, { params }) => {
   const game = games.reduce((prev, next) => {
@@ -44,6 +59,8 @@ const mapStateToProps = ({ games }, { params }) => {
     ...game
   }
 }
+
+
 
 
 export default connect(mapStateToProps, { fetchGames })(GamePage)

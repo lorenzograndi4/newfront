@@ -27,3 +27,8 @@ button {
   margin: 1em;
   padding: 0.5em;
 }
+
+table{
+  margin-top: 3em;
+  display: inline-table;
+}

@@ -8,6 +8,9 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/themes'
 import './App.css';
 
+import Board from './component/Board'
+
+
 class App extends PureComponent {
   static childContextTypes = {
     muiTheme: PropTypes.object.isRequired,
