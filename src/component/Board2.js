@@ -45,24 +45,10 @@ class Board extends React.Component {
       <table>
         <div className="board-row">
 
-        <tr><td></td><td>2</td>1<td></td></tr>
-        <tr><td>2</td>3<td>1</td>2<td>2</td></tr>
-          <td>2{this.renderSquare( )}</td>
+        <tr><td></td><td>2</td>2<td></td></tr>
+        <tr><td>3</td>2<td>2</td>1<td>1</td></tr>
+          <td>3{this.renderSquare( )}</td>
           <td>{this.renderSquare()}</td>
-          <td>{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-        </div>
-        <div className="board-row">
-          <td>4{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
-        </div>
-        <div className="board-row">
-          <td>2{this.renderSquare( )}</td>
-          <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
@@ -74,9 +60,23 @@ class Board extends React.Component {
           <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
         </div>
-
+        <div className="board-row">
+          <td>1{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+        </div>
         <div className="board-row">
           <td>2{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+          <td>{this.renderSquare( )}</td>
+        </div>
+
+        <div className="board-row">
+          <td>4{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>
           <td>{this.renderSquare( )}</td>

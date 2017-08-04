@@ -7,9 +7,9 @@ import Navigation from './component/Navigation'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './assets/styles/themes'
 import './App.css';
-import Square from './component/square'
-import Board from './component/board'
-import Game from './component/game'
+
+import Board from './component/Board'
+
 
 class App extends PureComponent {
   static childContextTypes = {
@@ -34,9 +34,9 @@ class App extends PureComponent {
 
         </p>
         {this.props.children}
-        <Game />
-        <Board />
-        <Square />
+
+    
+
       </div>
       </MuiThemeProvider>
     );

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import RaisedButton from 'material-ui/RaisedButton'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
 import createGame from '../actions/games/create'
 
 class CreateGameButton extends PureComponent {
@@ -14,7 +14,7 @@ class CreateGameButton extends PureComponent {
 
     return (
       <div className="CreateGameButton">
-        <RaisedButton
+        <FloatingActionButton
           label="New Game"
           primary={true}
           onClick={this.props.createGame}
