@@ -1,0 +1,32 @@
+.float-left {
+  float: left;
+  margin:3em;
+}
+
+.float-right {
+  float: right;
+  margin-top: -6em;
+  padding: 1em;
+}
+
+.link {
+  text-decoration: none;
+  color: grey;
+  font-size: 1.2rem;
+}
+
+.clear {
+  clear: both;
+}
+
+.item-wrapper {
+  /*display: inline-block;*/
+}
+
+.secondary {
+  margin-right: 5rem;
+}
+
+.btn {
+  display: inline !important;
+}

@@ -7,12 +7,13 @@ import JoinGameButton from './JoinGameButton'
 import joinGame from  '../actions/games/join'
 import DeleteGameButton from './DeleteGameButton'
 import deleteGame from  '../actions/games/delete'
+import './GameItem.css'
 // import games from '../reducers/games'
 
 class GameItem extends PureComponent {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    usePlural: PropTypes.bool.isRequired
+    usePlural: PropTypes.bool
   }
 
   joinThisGame() {
@@ -31,13 +32,17 @@ class GameItem extends PureComponent {
     console.log(this.props)
 
     return(
-        <ListItem primarytext={title}>
-          <Link to={`/games/${_id}`}>
-            { title } has { players.length } player
+        <ListItem className='item-wrapper'>
+          <Link className='float-left link' to={`/games/${_id}`}>
+            This { title } has { players.length } player
             { usePlural ? 's' : ''}
           </Link>
-          <JoinGameButton onChange={this.joinThisGame.bind(this)} />
-          <DeleteGameButton onChange={this.deleteThisGame.bind(this)} />
+          <div className='clear'>
+          </div>
+          <div className='float-right'>
+            <DeleteGameButton className='secondary btn' onChange={this.deleteThisGame.bind(this)} />
+            <JoinGameButton className='primary btn' onChange={this.joinThisGame.bind(this)} />
+          </div>
         </ListItem>
     )
   }

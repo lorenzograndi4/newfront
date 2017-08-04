@@ -132,7 +132,7 @@ export class SignUp extends PureComponent {
   }
 
   render() {
-    const { errors } = this.state
+    // const { errors } = this.state
     return (
       <Paper style={ dialogStyle }>
         <Title content="Sign Up" level={2} />

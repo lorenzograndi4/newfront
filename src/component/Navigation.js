@@ -4,7 +4,6 @@ import { push } from 'react-router-redux'
 import signOut from '../actions/user/sign-out'
 import AppBar from 'material-ui/AppBar'
 import ActionHome from 'material-ui/svg-icons/action/home';
-import currentUser from '../reducers/currentUser'
 import IconButton from 'material-ui/IconButton'
 import FlatButton from 'material-ui/FlatButton'
 
@@ -18,25 +17,23 @@ class Navigation extends PureComponent {
   }
 
   render() {
-    const { signedIn, currentUserName } = this.props
+    const { signedIn } = this.props
+    console.log({signedIn})
     return (
       <AppBar
-        title={signedIn
-          ? "Welcome, " + currentUserName
-          : "Nanogram"}
+        title={signedIn ? "Welcome" : "Nanogram"}
         iconElementLeft={<IconButton onClick={this.goHome.bind(this)}><ActionHome /></IconButton>}
-        iconElementRight={signedIn ?
-          <FlatButton label="Sign out" onClick={this.props.signOut} /> :
-          <FlatButton label="Sign up" onClick={this.signUp.bind(this)} />
+        iconElementRight={signedIn
+          ? <FlatButton label="Sign out" onClick={this.props.signOut} />
+          : <FlatButton label="Sign up" onClick={this.signUp.bind(this)} />
         }
       />
     )
   }
 }
 
-const mapStateToProps = ({ ...currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
-  currentUserName: currentUser || 'friend' // how to solve this?
+const mapStateToProps = ({ currentUser }) => ({
+  signedIn: !!currentUser && !!currentUser._id
 })
 
 export default connect(mapStateToProps, { push, signOut })(Navigation)
