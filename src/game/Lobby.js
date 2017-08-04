@@ -4,11 +4,12 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import fetchGames from '../actions/games/fetch'
 import GameItem from './GameItem'
-import Title from '../component/Title'
+// import Title from '../component/Title'
 import { List } from 'material-ui/List';
 import CreateGameButton from './CreateGameButton'
 import PropTypes from 'prop-types'
 import subscribeToGames from '../actions/games/subscribe'
+import './Lobby.css'
 
 class Lobby extends PureComponent {
   static propTypes = {
@@ -31,17 +32,17 @@ class Lobby extends PureComponent {
       push(`/games/$(gameId)`)
     }
   }
-
-  isJoinable(game) {
-    if (game.started) return false
-    return !!!this.isPlayer(game)
-  }
-
-  isPlayer(game) {
-    return game.players
-    .map((p) => (p.userId))
-    .includes(this.props.currentUser._id)
-  }
+  //
+  // isJoinable(game) {
+  //   if (game.started) return false
+  //   return !!!this.isPlayer(game)
+  // }
+  //
+  // isPlayer(game) {
+  //   return game.players
+  //   .map((p) => (p.userId))
+  //   .includes(this.props.currentUser._id)
+  // }
 
   renderGame(game, index) {
     return <GameItem key={index} { ...game } />
@@ -49,10 +50,7 @@ class Lobby extends PureComponent {
 
   render() {
     return(
-      <div className="games wrapper">
-        <header>
-          <Title content="Games" />
-        </header>
+      <div className="games-wrapper">
         <main>
           <CreateGameButton />
             <List>
